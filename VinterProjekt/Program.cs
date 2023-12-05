@@ -32,20 +32,20 @@ String Pokemon = Console.ReadLine();
 int choosePokemon = 0;
 while (choosePokemon == 0){
 if (Pokemon == "1"){
-Console.WriteLine("1");
-Console.ReadLine();
+Thread.Sleep(1000);
 choosePokemon+=1;
 }
+
 else if (Pokemon == "2"){
-Console.WriteLine("2");
-Console.ReadLine();
+Thread.Sleep(1000);
 choosePokemon+=2;    
 }
+
 else if (Pokemon == "3"){
-Console.WriteLine("3");
-Console.ReadLine();
+Thread.Sleep(1000);
 choosePokemon+=3;    
 }
+
 else {
 Console.WriteLine("Choose pokemon 1, 2 or 3");  
 Pokemon = Console.ReadLine();
@@ -62,12 +62,12 @@ Thread.Sleep(2500);
 }
 
 if (choosePokemon == 2) {
-Console.WriteLine(names2[Card2]);
+Console.WriteLine($"You have chosen {names2[Card2]}! \n {commentsFirst[commentsFirstR]}");
 Console.ReadLine();
 }
 
 if (choosePokemon == 3) {
-Console.WriteLine(names3[Card3]);
+Console.WriteLine($"You have chosen {names3[Card3]}! \n {commentsFirst[commentsFirstR]}");
 Console.ReadLine();
 }
 
