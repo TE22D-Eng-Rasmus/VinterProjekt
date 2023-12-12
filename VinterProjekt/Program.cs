@@ -8,14 +8,18 @@ string[] names3 ={"shuno","Snubbe","skiti","okej"};
 string[] FighterNames = {"Incineroar","Dragonite","Lapras"};
 // Olika fighters/pokemons som man kan möta
 int FighterR = generator.Next(3);
+//Tar random vilken fighter man möter
 
 int Card1 = generator.Next(4);
 int Card2 = generator.Next(4);
 int Card3 = generator.Next(4);
 //Tar en pokemon random från varje array
 
-string[] commentsFirst = {"Intresting choice but it might work.", "A personal favorite actually.", "Not what i would have choosen.", "Good enough, Probably"};
+string[] commentsFirst = {"Intresting choice but it might work.", "A personal favorite actually.", "Not what i would have choosen.", "Good enough, Probably", "Thats a strong fighter!"};
 //Olika kommentarer som kan komma när man valt pokemon
+
+string[] attacks = {};
+//Lista med olika attacker som man kan välja emellan
 
 Console.WriteLine("Welcome to Pokemon Card Battle\nChoose a Fighter!");
 Console.Write("1 ");
@@ -53,7 +57,7 @@ Pokemon = Console.ReadLine();
 }
 }
 
-Console.WriteLine("Choose difficulty \n1.Easy \n2Normal \n3Hard");
+Console.WriteLine("Choose difficulty \n1.Easy \n2.Normal \n3.Hard");
 string difficulty = Console.ReadLine();
 
 int chooseDifficulty = 0;
@@ -79,7 +83,7 @@ difficulty = Console.ReadLine();
 }
 
 
-int commentsFirstR = generator.Next(4);
+int commentsFirstR = generator.Next(5);
 //väljer random vilken kommentar som ska sägas från listan "commentsFirst"
 
 
@@ -88,7 +92,6 @@ int Health = 25; //Spelarens Health
 int HealthOpp = 0; //Fiendes Health
 if(chooseDifficulty == 1){
 HealthOpp = 20; 
-
 }
 if(chooseDifficulty == 2){
 HealthOpp = 25; 
@@ -109,22 +112,29 @@ Console.WriteLine($"You have chosen {names[Card1]}! \n {commentsFirst[commentsFi
 Thread.Sleep(2500);
 
 Console.WriteLine($"Your Opponent is {FighterNames[FighterR]}");
+Thread.Sleep(2500);
 
+Console.WriteLine($"{names[Card1]} Gets to start!\nChoose a attack 1.Volt Tackle or 2.");
+
+break;
 }
 
 if (choosePokemon == 2) {
 Console.WriteLine($"You have chosen {names2[Card2]}! \n {commentsFirst[commentsFirstR]}");
 Thread.Sleep(2500);
 
+break;
 }
 
 if (choosePokemon == 3) {
 Console.WriteLine($"You have chosen {names3[Card3]}! \n {commentsFirst[commentsFirstR]}");
 Thread.Sleep(2500);
 
+
+break;
 }
 
-Console.WriteLine();
+
 
 }
 
