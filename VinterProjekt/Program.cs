@@ -18,8 +18,9 @@ int Card3 = generator.Next(4);
 string[] commentsFirst = {"Intresting choice but it might work.", "A personal favorite actually.", "Not what i would have choosen.", "Good enough, Probably", "Thats a strong fighter!"};
 //Olika kommentarer som kan komma när man valt pokemon
 
-string[] attacks = {};
+string[] attacks = {"Volt tackle", "Techno Blast", "Pyro Ball", "Power Whip", "Meteor Beam", "Hydro Pump", "Aura Wheel", "Stone Edge"};
 //Lista med olika attacker som man kan välja emellan
+string[] attacks2 = {"Thunderbolt", "Moongeist Beam", "Magma Storm", "Hyper Drill", "Fusion Bolt", "Diamond Storm", "Combat Torque", "Meteor Mash"};
 
 Console.WriteLine("Welcome to Pokemon Card Battle\nChoose a Fighter!");
 Console.Write("1 ");
@@ -86,6 +87,11 @@ difficulty = Console.ReadLine();
 int commentsFirstR = generator.Next(5);
 //väljer random vilken kommentar som ska sägas från listan "commentsFirst"
 
+int chooseAttackR = generator.Next(8);
+//Väljer random vilka attacker som man kan välja mellan från listan "attacks"
+
+int chooseAttackR2 = generator.Next(8);
+
 
 
 int Health = 25; //Spelarens Health
@@ -114,7 +120,8 @@ Thread.Sleep(2500);
 Console.WriteLine($"Your Opponent is {FighterNames[FighterR]}");
 Thread.Sleep(2500);
 
-Console.WriteLine($"{names[Card1]} Gets to start!\nChoose a attack 1.Volt Tackle or 2.");
+Console.WriteLine($"{names[Card1]} Gets to start!\nChoose a attack \n1.{attacks[chooseAttackR]} or 2.{attacks2[chooseAttackR2]}");
+Console.ReadLine();
 
 break;
 }
