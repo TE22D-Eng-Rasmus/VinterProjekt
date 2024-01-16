@@ -1,4 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿
 Random generator = new Random();
 string[] names = {"Pickachu", "Mewtwo","Charizard","Bulbausar"};
 string[] names2 ={"Squirtle","Charmander","Greninja","abdi"};
@@ -34,21 +34,19 @@ Console.Write(names3[Card3]);
 Console.WriteLine("\nChoose pokemon 1, 2 or 3");
 String Pokemon = Console.ReadLine();
 
+
 //gör så att du måste välja en pokemon
 int choosePokemon = 0;
 while (choosePokemon == 0){
 if (Pokemon == "1"){
-Thread.Sleep(500);
 choosePokemon+=1;
 }
 
 else if (Pokemon == "2"){
-Thread.Sleep(500);
 choosePokemon+=2;    
 }
 
 else if (Pokemon == "3"){
-Thread.Sleep(500);
 choosePokemon+=3;    
 }
 
@@ -91,7 +89,7 @@ int chooseAttackR = generator.Next(8);
 //Väljer random vilka attacker som man kan välja mellan från listan "attacks"
 
 int chooseAttackR2 = generator.Next(8);
-
+//Väljer random vilka attacker som man kan välja mellan från listan "attacks2"
 
 
 int Health = 25; //Spelarens Health
@@ -113,30 +111,66 @@ Health = 0;
 if (HealthOpp < 0) {
 HealthOpp = 0;
 }
+
+
 if (choosePokemon == 1) {
-Console.WriteLine($"You have chosen {names[Card1]}! \n {commentsFirst[commentsFirstR]}");
+int damage = 0; //skada som spelaren gör
+int damageOpp = 0; //skada som motståndaren gör
+string chooseAttackPlayerS; //gör så att spelaren kan välja vilken attack som ska användas
+int chooseAttackPlayer; //används för göra om stringen till en int
+
+Console.WriteLine($"You have chosen {names[Card1]}! \n{commentsFirst[commentsFirstR]}");
 Thread.Sleep(2500);
 
-Console.WriteLine($"Your Opponent is {FighterNames[FighterR]}");
+Console.WriteLine($"Your Opponent is {FighterNames[FighterR]}\n");
 Thread.Sleep(2500);
 
 Console.WriteLine($"{names[Card1]} Gets to start!\nChoose a attack \n1.{attacks[chooseAttackR]} or 2.{attacks2[chooseAttackR2]}");
-Console.ReadLine();
+chooseAttackPlayerS = Console.ReadLine();
+
+
+chooseAttackPlayer = 0;   //Gör så att spelaren inte kan välja något annat än 1 eller 2
+while (chooseAttackPlayer == 0){
+if (chooseAttackPlayerS == "1"){
+chooseAttackPlayer+=1;
+}
+
+else if (chooseAttackPlayerS == "2"){
+chooseAttackPlayer+=2;    
+}
+
+else {
+Console.WriteLine($"Choose a attack \n1.{attacks[chooseAttackR]} or 2.{attacks2[chooseAttackR2]}");  
+chooseAttackPlayerS = Console.ReadLine();
+}
+}
+
 
 break;
 }
 
 if (choosePokemon == 2) {
-Console.WriteLine($"You have chosen {names2[Card2]}! \n {commentsFirst[commentsFirstR]}");
+Console.WriteLine($"You have chosen {names2[Card2]}! \n{commentsFirst[commentsFirstR]}");
 Thread.Sleep(2500);
+
+Console.WriteLine($"Your Opponent is {FighterNames[FighterR]}");
+Thread.Sleep(2500);
+
+Console.WriteLine($"{names2[Card2]} Gets to start!\nChoose a attack \n1.{attacks[chooseAttackR]} or 2.{attacks2[chooseAttackR2]}");
+Console.ReadLine();
 
 break;
 }
 
 if (choosePokemon == 3) {
-Console.WriteLine($"You have chosen {names3[Card3]}! \n {commentsFirst[commentsFirstR]}");
+Console.WriteLine($"You have chosen {names3[Card3]}! \n{commentsFirst[commentsFirstR]}");
 Thread.Sleep(2500);
 
+Console.WriteLine($"Your Opponent is {FighterNames[FighterR]}");
+Thread.Sleep(2500);
+
+Console.WriteLine($"{names3[Card3]} Gets to start!\nChoose a attack \n1.{attacks[chooseAttackR]} or 2.{attacks2[chooseAttackR2]}");
+Console.ReadLine();
 
 break;
 }
@@ -146,3 +180,6 @@ break;
 }
 
 
+void BytaTillInt() {Console.WriteLine("HEjsan");
+Thread.Sleep(2500);
+};
