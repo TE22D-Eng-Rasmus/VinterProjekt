@@ -1,12 +1,12 @@
 ﻿
 Random generator = new Random();
-string[] names = {"Pickachu", "Mewtwo","Charizard","Bulbausar"};
-string[] names2 ={"Squirtle","Charmander","Greninja","abdi"};
-string[] names3 ={"shuno","Snubbe","skiti","okej"};
+string[] names = { "Pickachu", "Mewtwo", "Charizard", "Bulbausar" };
+string[] names2 = { "Squirtle", "Charmander", "Greninja", "abdi" };
+string[] names3 = { "shuno", "Snubbe", "skiti", "okej" };
 //Tre arrays med namn med olika pokemons
 
 
-string[] FighterNames = {"Incineroar","Dragonite","Lapras"};
+string[] FighterNames = { "Incineroar", "Dragonite", "Lapras" };
 // Olika fighters/pokemons som man kan möta
 int FighterR = generator.Next(3);
 //Tar random vilken fighter man möter
@@ -18,13 +18,15 @@ int Card3 = generator.Next(4);
 //Tar en pokemon random från varje array
 
 
-string[] commentsFirst = {"Intresting choice but it might work.", "A personal favorite actually.", "Not what i would have choosen.", "Good enough, Probably", "Thats a strong fighter!"};
+string[] commentsFirst = { "Intresting choice but it might work.", "A personal favorite actually.", "Not what i would have choosen.", "Good enough, Probably", "Thats a strong fighter!" };
 //Olika kommentarer som kan komma när man valt pokemon
 
+string[] commentsAttack = { $"Wow that's got to hurt", "What a EPIC battle" };
 
-string[] attacks = {"Volt tackle", "Techno Blast", "Pyro Ball", "Power Whip", "Meteor Beam", "Hydro Pump", "Aura Wheel", "Stone Edge"};
+
+string[] attacks = { "Volt tackle", "Techno Blast", "Pyro Ball", "Power Whip", "Meteor Beam", "Hydro Pump", "Aura Wheel", "Stone Edge" };
 //Lista med olika attacker som man kan välja emellan
-string[] attacks2 = {"Thunderbolt", "Moongeist Beam", "Magma Storm", "Hyper Drill", "Fusion Bolt", "Diamond Storm", "Combat Torque", "Meteor Mash"};
+string[] attacks2 = { "Thunderbolt", "Moongeist Beam", "Magma Storm", "Hyper Drill", "Fusion Bolt", "Diamond Storm", "Combat Torque", "Meteor Mash" };
 
 
 
@@ -44,23 +46,28 @@ String Pokemon = Console.ReadLine();
 
 //gör så att du måste välja en pokemon
 int choosePokemon = 0;
-while (choosePokemon == 0){
-if (Pokemon == "1"){
-choosePokemon+=1;
-}
+while (choosePokemon == 0)
+{
+    if (Pokemon == "1")
+    {
+        choosePokemon += 1;
+    }
 
-else if (Pokemon == "2"){
-choosePokemon+=2;    
-}
+    else if (Pokemon == "2")
+    {
+        choosePokemon += 2;
+    }
 
-else if (Pokemon == "3"){
-choosePokemon+=3;    
-}
+    else if (Pokemon == "3")
+    {
+        choosePokemon += 3;
+    }
 
-else {
-Console.WriteLine("Choose pokemon 1, 2 or 3");  
-Pokemon = Console.ReadLine();
-}
+    else
+    {
+        Console.WriteLine("Choose pokemon 1, 2 or 3");
+        Pokemon = Console.ReadLine();
+    }
 }
 
 
@@ -68,25 +75,30 @@ Console.WriteLine("Choose difficulty \n1.Easy \n2.Normal \n3.Hard");
 string difficulty = Console.ReadLine();
 
 int chooseDifficulty = 0;
-while (chooseDifficulty == 0){
-if (difficulty == "1"){
-Thread.Sleep(500);
-chooseDifficulty+=1;
-}
+while (chooseDifficulty == 0)
+{
+    if (difficulty == "1")
+    {
+        Thread.Sleep(500);
+        chooseDifficulty += 1;
+    }
 
-else if (difficulty == "2"){
-Thread.Sleep(500);
-chooseDifficulty+=2;    
-}
+    else if (difficulty == "2")
+    {
+        Thread.Sleep(500);
+        chooseDifficulty += 2;
+    }
 
-else if (difficulty == "3"){
-Thread.Sleep(500);
-chooseDifficulty+=3;    
-}
-else {
-Console.WriteLine("Choose difficulty 1, 2 or 3");  
-difficulty = Console.ReadLine();
-}
+    else if (difficulty == "3")
+    {
+        Thread.Sleep(500);
+        chooseDifficulty += 3;
+    }
+    else
+    {
+        Console.WriteLine("Choose difficulty 1, 2 or 3");
+        difficulty = Console.ReadLine();
+    }
 }
 
 
@@ -99,133 +111,183 @@ int chooseAttackR = generator.Next(8);
 int chooseAttackR2 = generator.Next(8);
 //Väljer random vilka attacker som man kan välja mellan från listan "attacks2"
 
+int commentsAttackR = generator.Next(2);
+
 
 int Health = 25; //Spelarens Health
 int HealthOpp = 0; //Fiendes Health
-if(chooseDifficulty == 1){
-HealthOpp = 20; 
+if (chooseDifficulty == 1)
+{
+    HealthOpp = 20;
 }
-if(chooseDifficulty == 2){
-HealthOpp = 25; 
+if (chooseDifficulty == 2)
+{
+    HealthOpp = 25;
 }
-if(chooseDifficulty == 3){
-HealthOpp = 35; 
-}
-
-while (Health > 0 || HealthOpp > 0) {
-if (Health < 0) {
-Health = 0;
-}
-if (HealthOpp < 0) {    //Tänk på att lägga in slutet här
-HealthOpp = 0;
+if (chooseDifficulty == 3)
+{
+    HealthOpp = 35;
 }
 
-
-if (choosePokemon == 1) {
-int damage = 0; //skada som spelaren gör
-int damageOpp = 0; //skada som motståndaren gör
-string chooseAttackPlayerS; //gör så att spelaren kan välja vilken attack som ska användas
-int chooseAttackPlayer; //används för göra om stringen till en int
-
-Console.WriteLine($"You have chosen {names[Card1]}! \n{commentsFirst[commentsFirstR]}");
-Thread.Sleep(2500);
-
-Console.WriteLine($"Your Opponent is {FighterNames[FighterR]}\n");
-Thread.Sleep(2500);
-
-Console.WriteLine($"{names[Card1]} Gets to start!\nChoose a attack \n1.{attacks[chooseAttackR]} or 2.{attacks2[chooseAttackR2]}");
-chooseAttackPlayerS = Console.ReadLine();
+while (Health > 0 || HealthOpp > 0)
+{
+    if (Health < 0)
+    {
+        Health = 0;
+    }
+    if (HealthOpp < 0)
+    {    //Tänk på att lägga in slutet här
+        HealthOpp = 0;
+    }
 
 
-chooseAttackPlayer = 0;   //Gör så att spelaren inte kan välja något annat än 1 eller 2
-while (chooseAttackPlayer == 0){
-if (chooseAttackPlayerS == "1"){
-chooseAttackPlayer+=1;
-}
-
-else if (chooseAttackPlayerS == "2"){
-chooseAttackPlayer+=2;    
-}
-
-else {
-Console.WriteLine($"Choose a attack \n1.{attacks[chooseAttackR]} or 2.{attacks2[chooseAttackR2]}");  
-chooseAttackPlayerS = Console.ReadLine();
-}
-}
 
 
-break;
-}
-
-if (choosePokemon == 2) {
-int damage = 0; //skada som spelaren gör
-int damageOpp = 0; //skada som motståndaren gör
-string chooseAttackPlayerS; //gör så att spelaren kan välja vilken attack som ska användas
-int chooseAttackPlayer; 
-
-Console.WriteLine($"You have chosen {names2[Card2]}! \n{commentsFirst[commentsFirstR]}");
-Thread.Sleep(2500);
-
-Console.WriteLine($"Your Opponent is {FighterNames[FighterR]}\n");
-Thread.Sleep(2500);
-
-Console.WriteLine($"{names2[Card2]} Gets to start!\nChoose a attack \n1.{attacks[chooseAttackR]} or 2.{attacks2[chooseAttackR2]}");
-chooseAttackPlayerS = Console.ReadLine();
+    if (choosePokemon == 1)
+    {
+        int damage = 0; //skada som spelaren gör
+        int damageOpp = 0; //skada som motståndaren gör
+        string chooseAttackPlayerS; //gör så att spelaren kan välja vilken attack som ska användas
+        int chooseAttackPlayer; //används för göra om stringen till en int
 
 
-chooseAttackPlayer = 0;   //Gör så att spelaren inte kan välja något annat än 1 eller 2
-while (chooseAttackPlayer == 0){
-if (chooseAttackPlayerS == "1"){
-chooseAttackPlayer+=1;
-}
+        Console.WriteLine($"You have chosen {names[Card1]}! \n{commentsFirst[commentsFirstR]}");
+        Thread.Sleep(2500);
 
-else if (chooseAttackPlayerS == "2"){
-chooseAttackPlayer+=2;    
-}
+        Console.WriteLine($"Your Opponent is {FighterNames[FighterR]}\n");
+        Thread.Sleep(2500);
 
-else {
-Console.WriteLine($"Choose a attack \n1.{attacks[chooseAttackR]} or 2.{attacks2[chooseAttackR2]}");  
-chooseAttackPlayerS = Console.ReadLine();
-}
-}
-
-break;
-}
-
-if (choosePokemon == 3) {
-int damage = 0; //skada som spelaren gör
-int damageOpp = 0; //skada som motståndaren gör
-string chooseAttackPlayerS; //gör så att spelaren kan välja vilken attack som ska användas
-int chooseAttackPlayer; 
-
-Console.WriteLine($"You have chosen {names3[Card3]}! \n{commentsFirst[commentsFirstR]}");
-Thread.Sleep(2500);
-
-Console.WriteLine($"Your Opponent is {FighterNames[FighterR]}\n");
-Thread.Sleep(2500);
-
-Console.WriteLine($"{names3[Card3]} Gets to start!\nChoose a attack \n1.{attacks[chooseAttackR]} or 2.{attacks2[chooseAttackR2]}");
-chooseAttackPlayerS = Console.ReadLine();
+        Console.WriteLine($"{names[Card1]} Gets to start!\nChoose a attack \n1.{attacks[chooseAttackR]} or 2.{attacks2[chooseAttackR2]}");
+        chooseAttackPlayerS = Console.ReadLine();
 
 
-chooseAttackPlayer = 0;   //Gör så att spelaren inte kan välja något annat än 1 eller 2
-while (chooseAttackPlayer == 0){
-if (chooseAttackPlayerS == "1"){
-chooseAttackPlayer+=1;
-}
+        chooseAttackPlayer = 0;   //Gör så att spelaren inte kan välja något annat än 1 eller 2
+        while (chooseAttackPlayer == 0)
+        {
+            if (chooseAttackPlayerS == "1")
+            {
+                chooseAttackPlayer += 1;
+            }
 
-else if (chooseAttackPlayerS == "2"){
-chooseAttackPlayer+=2;    
-}
+            else if (chooseAttackPlayerS == "2")
+            {
+                chooseAttackPlayer += 2;
+            }
 
-else {
-Console.WriteLine($"Choose a attack \n1.{attacks[chooseAttackR]} or 2.{attacks2[chooseAttackR2]}");  
-chooseAttackPlayerS = Console.ReadLine();
-}
-}
+            else
+            {
+                Console.WriteLine($"Choose a attack \n1.{attacks[chooseAttackR]} or 2.{attacks2[chooseAttackR2]}");
+                chooseAttackPlayerS = Console.ReadLine();
+            }
+        }
 
-break;
-}
+        if (chooseAttackPlayer == 1)
+        {
+            damage = generator.Next(7, 12);
+            Console.WriteLine($"{names[Card1]} attacked with {attacks[chooseAttackR]} and did {damage} damage to {FighterNames[FighterR]}\n{commentsAttack[commentsAttackR]}\n");
+            HealthOpp -= damage;
+            Console.ReadLine();
+        }
+
+        if (chooseAttackPlayer == 2)
+        {
+            damage = generator.Next(5, 15);
+            Console.WriteLine($"{names[Card1]} attacked with {attacks2[chooseAttackR2]} and did {damage} damage to {FighterNames[FighterR]}\n{commentsAttack[commentsAttackR]}\n");
+            HealthOpp -= damage;
+            Console.WriteLine($"{HealthOpp}");
+            Console.ReadLine();
+        }
+
+        break;
+    }
+
+
+
+
+
+    if (choosePokemon == 2)
+    {
+        int damage = 0; //skada som spelaren gör
+        int damageOpp = 0; //skada som motståndaren gör
+        string chooseAttackPlayerS; //gör så att spelaren kan välja vilken attack som ska användas
+        int chooseAttackPlayer;
+
+        Console.WriteLine($"You have chosen {names2[Card2]}! \n{commentsFirst[commentsFirstR]}");
+        Thread.Sleep(2500);
+
+        Console.WriteLine($"Your Opponent is {FighterNames[FighterR]}\n");
+        Thread.Sleep(2500);
+
+        Console.WriteLine($"{names2[Card2]} Gets to start!\nChoose a attack \n1.{attacks[chooseAttackR]} or 2.{attacks2[chooseAttackR2]}");
+        chooseAttackPlayerS = Console.ReadLine();
+
+
+        chooseAttackPlayer = 0;   //Gör så att spelaren inte kan välja något annat än 1 eller 2
+        while (chooseAttackPlayer == 0)
+        {
+            if (chooseAttackPlayerS == "1")
+            {
+                chooseAttackPlayer += 1;
+            }
+
+            else if (chooseAttackPlayerS == "2")
+            {
+                chooseAttackPlayer += 2;
+            }
+
+            else
+            {
+                Console.WriteLine($"Choose a attack \n1.{attacks[chooseAttackR]} or 2.{attacks2[chooseAttackR2]}");
+                chooseAttackPlayerS = Console.ReadLine();
+            }
+        }
+
+        break;
+    }
+
+
+
+
+
+    if (choosePokemon == 3)
+    {
+        int damage = 0; //skada som spelaren gör
+        int damageOpp = 0; //skada som motståndaren gör
+        string chooseAttackPlayerS; //gör så att spelaren kan välja vilken attack som ska användas
+        int chooseAttackPlayer;
+
+        Console.WriteLine($"You have chosen {names3[Card3]}! \n{commentsFirst[commentsFirstR]}");
+        Thread.Sleep(2500);
+
+        Console.WriteLine($"Your Opponent is {FighterNames[FighterR]}\n");
+        Thread.Sleep(2500);
+
+        Console.WriteLine($"{names3[Card3]} Gets to start!\nChoose a attack \n1.{attacks[chooseAttackR]} or 2.{attacks2[chooseAttackR2]}");
+        chooseAttackPlayerS = Console.ReadLine();
+
+
+        chooseAttackPlayer = 0;   //Gör så att spelaren inte kan välja något annat än 1 eller 2
+        while (chooseAttackPlayer == 0)
+        {
+            if (chooseAttackPlayerS == "1")
+            {
+                chooseAttackPlayer += 1;
+            }
+
+            else if (chooseAttackPlayerS == "2")
+            {
+                chooseAttackPlayer += 2;
+            }
+
+            else
+            {
+                Console.WriteLine($"Choose a attack \n1.{attacks[chooseAttackR]} or 2.{attacks2[chooseAttackR2]}");
+                chooseAttackPlayerS = Console.ReadLine();
+            }
+        }
+
+        break;
+    }
 
 
 
