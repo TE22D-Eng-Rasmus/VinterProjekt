@@ -1,14 +1,14 @@
 ﻿
 Random generator = new Random();
 string[] names = { "Pickachu", "Mewtwo", "Charizard", "Bulbausar" };
-string[] names2 = { "Squirtle", "Charmander", "Greninja", "abdi" };
-string[] names3 = { "shuno", "Snubbe", "skiti", "okej" };
+string[] names2 = { "Squirtle", "Charmander", "Greninja", "Timburr" };
+string[] names3 = { "Beedrill", "Wailord", "Bisharp", "Pikipek" };
 //Tre arrays med namn med olika pokemons
 
 
-string[] FighterNames = { "Incineroar", "Dragonite", "Lapras" };
+string[] FighterNames = { "Incineroar", "Dragonite", "Lapras", "Snorlax", "Moltrez" };
 // Olika fighters/pokemons som man kan möta
-int FighterR = generator.Next(3);
+int FighterR = generator.Next(5);
 //Tar random vilken fighter man möter
 
 
@@ -21,7 +21,7 @@ int Card3 = generator.Next(4);
 string[] commentsFirst = { "Intresting choice but it might work.", "A personal favorite actually.", "Not what i would have choosen.", "Good enough, Probably", "Thats a strong fighter!" };
 //Olika kommentarer som kan komma när man valt pokemon
 
-string[] commentsAttack = { $"Wow that's got to hurt", "What a EPIC battle" };
+string[] commentsAttack = { $"Wow that's got to hurt", "What a EPIC battle", "Hurt like a mosquito bite" };
 
 
 string[] attacks = { "Volt tackle", "Techno Blast", "Pyro Ball", "Power Whip", "Meteor Beam", "Hydro Pump", "Aura Wheel", "Stone Edge" };
@@ -111,7 +111,8 @@ int chooseAttackR = generator.Next(8);
 int chooseAttackR2 = generator.Next(8);
 //Väljer random vilka attacker som man kan välja mellan från listan "attacks2"
 
-int commentsAttackR = generator.Next(2);
+int commentsAttackR = generator.Next(3);
+//väljer random vilken kommentar som ska sägas från arrayen "commentsAttack"
 
 
 int Health = 25; //Spelarens Health
@@ -157,47 +158,93 @@ while (Health > 0 || HealthOpp > 0)
         Console.WriteLine($"Your Opponent is {FighterNames[FighterR]}\n");
         Thread.Sleep(2500);
 
-        Console.WriteLine($"{names[Card1]} Gets to start!\nChoose a attack \n1.{attacks[chooseAttackR]} or 2.{attacks2[chooseAttackR2]}");
-        chooseAttackPlayerS = Console.ReadLine();
+        Console.WriteLine($"{names[Card1]} Gets to start!\n");
+        Thread.Sleep(2500);
 
 
-        chooseAttackPlayer = 0;   //Gör så att spelaren inte kan välja något annat än 1 eller 2
-        while (chooseAttackPlayer == 0)
+        while (Health > 0 || HealthOpp > 0)
         {
-            if (chooseAttackPlayerS == "1")
+            if (Health < 0)
             {
-                chooseAttackPlayer += 1;
+                Health = 0;
+            }
+            if (HealthOpp < 0)
+            {    //Tänk på att lägga in slutet här
+                HealthOpp = 0;
             }
 
-            else if (chooseAttackPlayerS == "2")
+            Console.WriteLine($"Choose a attack \n1.{attacks[chooseAttackR]} or 2.{attacks2[chooseAttackR2]}");
+            chooseAttackPlayerS = Console.ReadLine();
+
+
+            chooseAttackPlayer = 0;   //Gör så att spelaren inte kan välja något annat än 1 eller 2
+            while (chooseAttackPlayer == 0)
             {
-                chooseAttackPlayer += 2;
+                if (chooseAttackPlayerS == "1")
+                {
+                    chooseAttackPlayer += 1;
+                }
+
+                else if (chooseAttackPlayerS == "2")
+                {
+                    chooseAttackPlayer += 2;
+                }
+
+                else
+                {
+                    Console.WriteLine($"Choose a attack \n1.{attacks[chooseAttackR]} or 2.{attacks2[chooseAttackR2]}");
+                    chooseAttackPlayerS = Console.ReadLine();
+                }
             }
 
-            else
+            if (chooseAttackPlayer == 1)
             {
-                Console.WriteLine($"Choose a attack \n1.{attacks[chooseAttackR]} or 2.{attacks2[chooseAttackR2]}");
-                chooseAttackPlayerS = Console.ReadLine();
+                int fighterattack = generator.Next(8);
+                damage = generator.Next(7, 12);
+                damageOpp = generator.Next(6,16);
+                Console.WriteLine($"{names[Card1]} attacked with {attacks[chooseAttackR]} and did {damage} damage to {FighterNames[FighterR]}\n{commentsAttack[commentsAttackR]}\n");
+                HealthOpp -= damage;
+                Health -=damageOpp;
+                if (Health < 0)
+            {
+                Health = 0;
             }
-        }
+            if (HealthOpp < 0)
+            {    //Tänk på att lägga in slutet här
+                HealthOpp = 0;
+            }
+                
+                Console.WriteLine($"{FighterNames[FighterR]} did {damageOpp} damage to {names[Card1]} with {attacks[fighterattack]}");
+                Thread.Sleep(2500);
+                Console.WriteLine($"{names[Card1]} has {Health} health\n{FighterNames[FighterR]} has {HealthOpp} health\n");
+                Thread.Sleep(2500);
+            }
 
-        if (chooseAttackPlayer == 1)
-        {
-            damage = generator.Next(7, 12);
-            Console.WriteLine($"{names[Card1]} attacked with {attacks[chooseAttackR]} and did {damage} damage to {FighterNames[FighterR]}\n{commentsAttack[commentsAttackR]}\n");
-            HealthOpp -= damage;
-            Console.ReadLine();
-        }
+            if (chooseAttackPlayer == 2)
+            {
+                int fighterattack = generator.Next(8);
+                damage = generator.Next(5, 15);
+                damageOpp = generator.Next(6,16);
+                Console.WriteLine($"{names[Card1]} attacked with {attacks2[chooseAttackR2]} and did {damage} damage to {FighterNames[FighterR]}\n{commentsAttack[commentsAttackR]}\n");
+                HealthOpp -= damage;
+                Health -=damageOpp;
+                if (Health < 0)
+            {
+                Health = 0;
+            }
+            if (HealthOpp < 0)
+            {    //Tänk på att lägga in slutet här
+                HealthOpp = 0;
+            }
 
-        if (chooseAttackPlayer == 2)
-        {
-            damage = generator.Next(5, 15);
-            Console.WriteLine($"{names[Card1]} attacked with {attacks2[chooseAttackR2]} and did {damage} damage to {FighterNames[FighterR]}\n{commentsAttack[commentsAttackR]}\n");
-            HealthOpp -= damage;
-            Console.WriteLine($"{HealthOpp}");
-            Console.ReadLine();
-        }
+                Console.WriteLine($"{FighterNames[FighterR]} did {damageOpp} damage to {names[Card1]} with {attacks[fighterattack]}");
+                Thread.Sleep(2500);
+                Console.WriteLine($"{names[Card1]} has {Health} health\n{FighterNames[FighterR]} has {HealthOpp} health\n");
+                Thread.Sleep(2500);
 
+            }
+
+        }
         break;
     }
 
